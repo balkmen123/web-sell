@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Session;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\DB;
 session_start();
 
 class AdminController extends Controller

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+
 use Illuminate\Http\Request;
-use Session;
+
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\insert;
-use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 session_start();
 
 class ProductController extends Controller

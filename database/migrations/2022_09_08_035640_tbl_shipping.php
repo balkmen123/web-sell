@@ -13,11 +13,13 @@ class TblShipping extends Migration
      */
     public function up()
     {
+        //
         Schema::create('tbl_shipping', function (Blueprint $table) {
             $table->Increments('shipping_id');
             $table->integer('customer_id');
             $table->string('shipping_name');
             $table->string('shipping_address');
+ 	        $table->string('shipping_notes');
             $table->string('shipping_phone');
             $table->string('shipping_email');
             $table->timestamps();
@@ -31,6 +33,7 @@ class TblShipping extends Migration
      */
     public function down()
     {
+        //
         Schema::dropIfExists('tbl_shipping');
     }
 }
