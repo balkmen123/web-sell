@@ -34,4 +34,10 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '483055590462312',  //client face của bạn
+        'client_secret' => 'b02be2cec5c404a753f949b2c4165b51',  //client app service face của bạn
+        'redirect' => 'http://127.0.0.1:8000/admin/callback' //callback trả về
+    ],
+
 ];

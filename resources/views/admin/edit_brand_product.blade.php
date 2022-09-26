@@ -20,11 +20,11 @@
                             {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên thương hiệu</label>
-                            <input type="text" value="{{$edit_value->brand_name}}" name="brand_product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên thương hiệu">
+                            <input type="text" value="{{$edit_value->brand_name}}" name="brand_product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên thương hiệu" data-validation="required,length" data-validation-length="min3" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả thương hiệu</label>
-                            <textarea style="resize:none"  rows = "8" class="form-control" id="exampleInputPassword1" name="brand_product_desc" >{{$edit_value->brand_desc}}</textarea>
+                            <textarea style="resize:none"  rows = "8" class="form-control" id="exampleInputPassword1" name="brand_product_desc" data-validation="required,length" data-validation-length="min3" >{{$edit_value->brand_desc}}</textarea>
                         </div>
 
                         <button type="submit"name="add_brand_product" class="btn btn-info">Cập nhật thương hiệu</button>

@@ -16,6 +16,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{{asset ('backend/css/bootstrap.min.css') }}" >
 <!-- //bootstrap-css -->
 <!-- Custom CSS -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <link href="{{ asset('backend/css/style.css') }}" rel='stylesheet' type='text/css' />
 <link href="{{ asset('backend/css/style-responsive.css') }}" rel="stylesheet"/>
 <!-- font CSS -->
@@ -31,6 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{ asset('backend/js/jquery2.0.3.min.js') }}"></script>
 <script src="{{ asset('backend/js/raphael-min.js') }}"></script>
 <script src="{{ asset('backend/js/morris.js') }}"></script>
+<script src="{{ asset('backend/js/jquery-form-validator.min.js') }}"></script>
 
 </head>
 <body>
@@ -165,8 +168,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="{{ ('backend/js/jquery.scrollTo.js') }}"></script>
 <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('backend/js/jquery-form-validator.min.js') }}"></script>
 
-
+<script type="text/javascript">
+	$.validate({
+		
+	})
+</script>
 <script>
 	CKEDITOR.replace('ckeditor');
 	CKEDITOR.replace('ckeditor1');

@@ -3,9 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>Home | ECS</title>
+    <meta name="description" content="{{ $meta_desc }}">
+	<meta name="ketwords" content="{{ $meta_keywords }}">
+	<link rel="canonical" href="{{ $url_canonical }}">
+	<meta property="og:title" content = "{{ $meta_title }}">
+	<meta property="og:url" content = "{{ $url_canonical }}">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<link rel="icon" type="image/x-icon" href=""/>
     <link href="{{asset ('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{asset ('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{asset ('frontend/css/prettyPhoto.css') }}" rel="stylesheet">

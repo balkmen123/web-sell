@@ -133,10 +133,14 @@ return [
             'rule-name' => 'custom-message',
         ],
         'product_name' => [
-            'required' => 'Họ và tên cần phải có',
+            'required' => 'Trường này nhất định phải có',
             'min' => 'Ít nhất trên 3 kí tự',
 
         ],
+        'product_price'=>[
+            'required' => 'Trường này nhất định phải có',
+            'min' => 'Ít nhất trên 3 kí tự',
+        ]
     ],
 
     /*

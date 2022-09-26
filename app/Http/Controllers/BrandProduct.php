@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Illuminate\Http\Request;
-use Session;
+use App\Brand;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\insert;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 session_start();
 
 
