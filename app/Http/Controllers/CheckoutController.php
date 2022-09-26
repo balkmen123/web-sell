@@ -83,7 +83,7 @@ class CheckoutController extends Controller
         $order_data['customer_id'] = Session::get('customer_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
-        $order_data['order_total'] = Cart::subtotal();
+        $order_data['order_total'] = Cart::total();
         $order_data['order_status'] = 'Dang chờ xử lý';
         $order_id = DB::table('tbl_order')->insertGetId($order_data);
 
@@ -147,13 +147,13 @@ class CheckoutController extends Controller
     {
         $this->AuthLogin();
         $order_by_id = DB::table('tbl_order')
-            ->join('tbl_customers', 'tbl_order.customer_id', '=', 'tbl_customers.customer_id')
-            ->join('tbl_shipping', 'tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
-            ->join('tbl_order_details', 'tbl_order.order_id', '=', 'tbl_order_details.order_id')
-            ->select('tbl_order.*', 'tbl_customers.*', 'tbl_shipping.*', 'tbl_order_details.*')
-            ->first();
+        ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+        ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
+        ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')->first();
 
-        $manager_order_by_id = view('admin.view_order')->with('order_by_id', $order_by_id);
+        $manager_order_by_id  = view('admin.view_order')->with('order_by_id',$order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
+
     }
 }

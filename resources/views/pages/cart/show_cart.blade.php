@@ -79,10 +79,10 @@
             <div class="col-sm-6">
                 <div class="total_area">
                     <ul>
-                        <li>Tổng <span>{{Cart::subtotal().' '.'vnđ'  }}</span></li>
-                        <li>Thuế <span>{{Cart::tax().' '.'vnđ'  }}</span></li>
+                        <li>Tổng <span>{{Cart::priceTotal(0, ',' , '.' ).' '.'vnđ'  }}</span></li>
+                        <li>Thuế <span>{{Cart::tax(0, ',' , '.').' '.'vnđ'  }}</span></li>
                         <li>Phí vận chuyển <span>Free</span></li>
-                        <li>Thành tiền <span>{{Cart::subtotal().' '.'vnđ'  }}</span></li>
+                        <li>Thành tiền <span>{{Cart::total(0, ',' , '.').' '.'vnđ'  }}</span></li>
                     </ul>
                     <?php 
                     $customer_id = Session::get('customer_id');

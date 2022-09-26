@@ -20,24 +20,24 @@
                             {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
-                            <input value="{{ $pro->product_name }}" type="text" name="product_name" class="form-control" id="exampleInputEmail1" >
+                            <input value="{{ $pro->product_name }}" type="text" name="product_name" class="form-control" id="exampleInputEmail1"data-validation="required,length" data-validation-length="min3"  >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
-                            <input value="{{ $pro->product_price }}" type="text" name="product_price" class="form-control" id="exampleInputEmail1">
+                            <input value="{{ $pro->product_price }}" type="text" name="product_price" class="form-control" id="exampleInputEmail1"data-validation="required,length" data-validation-length="min3" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1" >
+                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1" data-validation="required"  >
                             <img src="{{ URL::to('uploads/product/'. $pro->product_image) }}"height="100" width="100">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                            <textarea style="resize:none" rows = "8" class="form-control" id="exampleInputPassword1" name="product_desc" placeholder="Mô tả sản phẩm">{{ $pro->product_desc }}</textarea>
+                            <textarea style="resize:none" rows = "8" class="form-control" id="exampleInputPassword1" name="product_desc" placeholder="Mô tả sản phẩm"data-validation="required,length" data-validation-length="min3" >{{ $pro->product_desc }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                            <textarea style="resize:none" rows = "8" class="form-control" id="exampleInputPassword1" name="product_content" placeholder="Nội dung sản phẩm">{{ $pro->product_content }}</textarea>
+                            <textarea style="resize:none" rows = "8" class="form-control" id="exampleInputPassword1" name="product_content" placeholder="Nội dung sản phẩm"data-validation="required,length" data-validation-length="min3" >{{ $pro->product_content }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPasswor1">Danh mục sản phẩm</label>

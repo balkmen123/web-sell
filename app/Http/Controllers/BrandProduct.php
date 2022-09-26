@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Brand;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\insert;
 use Illuminate\Support\Facades\Session;

@@ -41,7 +41,7 @@
                 <thead>
                     <tr>
                       
-                        <th>Tên người nhaajn hafng</th>
+                        <th>Tên người nhận hàng</th>
                         <th>Địa chỉ</th>
                         <th>Số điện thoại</th>
                         
@@ -52,7 +52,6 @@
                 <tbody>
                     
                     <tr>
-                        
                         <td>{{ $order_by_id->shipping_name }}</td>
                         <td>{{ $order_by_id->shipping_address }}</td>
                         <td>{{ $order_by_id->shipping_phone }}</td>

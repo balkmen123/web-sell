@@ -9,10 +9,6 @@
               <li class="active">Thanh toán giỏ hàng</li>
             </ol>
         </div>
-
-        
-
-       
         <div class="review-payment">
             <h2>Xem lại giỏ hàng</h2>
         </div>
@@ -34,8 +30,6 @@
                 </thead>
                 <tbody>
                     @foreach ($content as $v_content) 
-                        
-                  
                     <tr>
                         <td class="cart_product">
                             <a href=""><img src="{{URL::to('uploads/product/'.$v_content->options->image) }}" alt="" width="100" height="100"/></a>

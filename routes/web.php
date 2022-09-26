@@ -85,3 +85,10 @@ Route::post('/save-checkout-customer', 'CheckoutController@save_checkout_custome
 //order
 Route::get('/manage-order', 'CheckoutController@manage_order');
 Route::get('/view-order/{orderId}', 'CheckoutController@view_order');
+
+//send mail
+Route::get('/send-mail', 'HomeController@send_mail');
+
+//loginFB
+Route::get('/login-facebook', 'AdminController@login_facebook');
+Route::get('/admin/callback', 'AdminController@callback_facebook');

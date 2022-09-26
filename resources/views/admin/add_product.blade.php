@@ -18,26 +18,27 @@
                         <form role="form" action="{{ URL::to('/save-product') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                         <div class="form-group">
-                           <h4 style="color:red"> {{ $errors->first('product_name') }}</h4>
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
-                            <input type="text" name="product_name" data-validation="length" data-validation-length="min3" class="form-control" id="exampleInputEmail1" >
+                            <input type="text" name="product_name" data-validation="required,length" data-validation-length="min3" class="form-control" id="exampleInputEmail1" >
                         </div>
                         <div class="form-group">
-                            <h4 style="color:red"> {{ $errors->first('product_price') }}</h4>
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
-                            <input type="text" name="product_price" class="form-control" id="exampleInputEmail1">
+                            <input type="text" name="product_price" data-validation="number,required,length" data-validation-length="min3" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1" >
+                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1" data-validation="required"  >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                            <textarea style="resize:none" rows = "8" class="form-control" id="ckeditor1" name="product_desc" placeholder="Mô tả sản phẩm"></textarea>
+                            <input type="text" style="resize:none" rows = "8"  data-validation="required,length" data-validation-length="min3"   class="form-control"name="product_desc">
+                            {{-- <textarea style="resize:none" rows = "8" data-validation="length" data-validation-length="min3"  class="form-control" id="ckeditor1" name="product_desc" placeholder="Mô tả sản phẩm"></textarea> --}}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                            <textarea style="resize:none" rows = "8" class="form-control"  id="ckeditor2" name="product_content" placeholder="Nội dung sản phẩm"></textarea>
+                            <input type="text" style="resize:none" rows = "8"  data-validation="required,length" data-validation-length="min3"   class="form-control"name="product_content">
+{{-- 
+                            <textarea style="resize:none" rows = "8" class="form-control"  id="ckeditor2" name="product_content" placeholder="Nội dung sản phẩm"></textarea> --}}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPasswor1">Danh mục sản phẩm</label>
