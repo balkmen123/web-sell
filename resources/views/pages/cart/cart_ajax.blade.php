@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                        
+                        @if(Session::get('cart')==true)
                     @php
                             $total = 0;
                     @endphp
@@ -56,11 +56,7 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                               
-                            
                                 <input class="cart_quantity" type="number" min="1" name="cart_qty[{{ $cart['session_id'] }}]" value="{{$cart['product_qty']}}"  >
-                            
-                                
                             </div>
                         </td>
                         <td class="cart_total">
@@ -73,13 +69,81 @@
                             <a class="cart_quantity_delete" href="{{ url('/del-product/'.$cart['session_id']) }}"><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
-                    
+
                     @endforeach
                     <tr>
                         <td><input type="submit" value="Cập nhật giỏ hàng" name="update_qty" class="check_out btn btn-default btn-sm"></td>
+                        <td><a class="btn btn-default check_out" href="{{ URL::to('/del-all-product') }}">Xóa tất cả</a></td>
+                        <td>
+                        @if(Session::get('coupon'))
+                        <a class="btn btn-default check_out" href="{{ URL::to('/unset-coupon') }}">Xóa mã</a>
+                             @endif
+                            </td>
+                            
+                    <td>
+                        <li>Tổng tiền: <span>  {{number_format($total,0,',','.')}}đ</span></li>
+                        @if(Session::get('coupon'))
+                        <li>
+                            @foreach (Session::get('coupon') as $key => $cou)
+                                @if ($cou['coupon_condition']==1)
+                                 Mã giảm:  {{ $cou['coupon_number'] }}%
+                                    <p>
+                                        @php
+                                            $total_coupon = ($total*$cou['coupon_number'])/100;
+                                            echo '<p><li>Tổng giảm: '.number_format($total_coupon,0,',','.').'đ</li></p>';
+                                        @endphp
+                                    </p>
+                                    <p>
+                                        <li>Thành tiền sau khi giảm :{{ number_format($total - $total_coupon,0,',','.') }}đ</li>
+                                    </p>
+                                    @elseif ($cou['coupon_condition']==2)
+                                    Mã giảm:  {{ number_format($cou['coupon_number'],0,',','.') }}đ
+                                    <p>
+                                        @php
+                                            $total_coupon = $total-$cou['coupon_number'];
+                                            
+                                        @endphp
+                                    </p>
+                                    <p>
+                                        <li>Thành tiền sau khi giảm: {{ number_format($total_coupon,0,',','.') }}đ</li>
+                                    </p>
+                                    @endif
+                            @endforeach
+                            
+                        </li> 
+                        @endif
+                        {{-- <li>Thuế <span>{{Cart::tax(0, ',' , '.').' '.'vnđ'  }}</span></li>
+                        <li>Phí vận chuyển <span>Free</span></li> --}}
+                        
+                        
+                    </td>
+                </tr>
+                    @else
+                    <tr>
+                        <td colspan="5">
+                            <center>
+                                @php
+                                echo 'làm ơn thêm sản phẩm vào giỏ hàng'
+                            @endphp
+                            </center>
+                          
+                        </td>
+                        
                     </tr>
+                    @endif
                 </tbody>
                 </form>
+                @if (Session::get('cart'))
+                <tr>
+                    <td>
+                        <form method="POST" action="{{ url('/check-coupon') }}">
+                            @csrf
+                            <input type="text" class=" form-control" name="coupon" placeholder="Nhập mã giảm giá"><br>
+                            <input type="submit" class="btn btn-default check_coupon" name="check_coupon" value=" Tính mã giảm giá"></input>
+                        </form>
+                    </td>
+                    </tr>
+                @endif
             </table>
         </div>
 
@@ -87,43 +151,5 @@
 </section> <!--/#cart_items-->
 
 
-<section id="do_action">
-    <div class="container">
 
-        <div class="row">
-
-            <div class="col-sm-6">
-                <div class="total_area">
-                    <ul>
-                        <li>Tổng tiền: <span>  {{number_format($total,0,',','.')}}đ</span></li>
-                        <li>Thuế <span>{{Cart::tax(0, ',' , '.').' '.'vnđ'  }}</span></li>
-                        <li>Phí vận chuyển <span>Free</span></li>
-                        <li>Thành tiền <span>{{Cart::total(0, ',' , '.').' '.'vnđ'  }}</span></li>
-                    </ul>
-                    <?php 
-                    $customer_id = Session::get('customer_id');
-                    $shipping_id=Session::get('shipping_id');
-                    if($customer_id!=NULL && $shipping_id == NULL) {							
-                ?>								
-                 <a class="btn btn-default check_out" href="{{ URL::to('/checkout') }}">Thanh toán</a>
-                <?php 
-                }elseif($customer_id!=NULL && $shipping_id != NULL){
-                ?>
-                <a class="btn btn-default check_out" href="{{ URL::to('/payment') }}">Thanh toán</a>
-                <?php 
-                }else{
-                ?>
-                 <a class="btn btn-default check_out" href="{{ URL::to('/login-checkout') }}">Thanh toán</a>
-                <?php 
-                }
-                ?>
-                 <a class="btn btn-default check_out" href="">Tính mã giảm giá</a>
-                 <a class="btn btn-default check_out" href="">Xóa tất cả</a>
-                       
-                     
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/#do_action-->
 @endsection
